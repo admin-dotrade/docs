@@ -1,0 +1,420 @@
+---
+title: "Telegram Bot"
+description: "Trade directly from Telegram with dotrade"
+---
+
+## Overview
+
+A trading interface built on Hyperliquid and Privy's non-custodial wallet infrastructure. Users can execute market and limit orders, manage positions, and set dynamic risk parameters (trailing stops, take profits) directly through Telegram commands. The bot abstracts exchange complexity while maintaining full custody through delegated signing.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card
+    title="Non-Custodial"
+    icon="key"
+  >
+    Full custody of your assets through Privy's wallet infrastructure.
+  </Card>
+  <Card
+    title="Simple Commands"
+    icon="terminal"
+  >
+    Execute complex trades with simple Telegram commands.
+  </Card>
+  <Card
+    title="Advanced Orders"
+    icon="chart-line"
+  >
+    Trailing stops, take profits, and dynamic risk management.
+  </Card>
+  <Card
+    title="Multi-Exchange"
+    icon="arrows-split-up-and-left"
+  >
+    Support for Hyperliquid and Extended (more coming soon).
+  </Card>
+</CardGroup>
+
+## Getting Started
+
+<Steps>
+  <Step title="Start the Bot">
+    Send `/start` to [@dotrade_bot](https://t.me/dotrade_bot) to initialize and create your Privy account.
+  </Step>
+  <Step title="Set Your Exchange">
+    Use `/setexchange hyperliquid` to configure your preferred exchange.
+  </Step>
+  <Step title="Deposit & Bridge">
+    Deposit USDC to your wallet address and bridge to your exchange using `/bridge [amount]`.
+  </Step>
+  <Step title="Start Trading">
+    Execute your first trade with `/market ETH long 100`.
+  </Step>
+</Steps>
+
+## Commands Reference
+
+### Setup Commands
+
+<AccordionGroup>
+  <Accordion title="/start - Initialize Bot">
+    Initializes the bot and creates a Privy account for you, where you can deposit tokens and bridge them to your preferred exchange to start trading.
+
+    **Usage:**
+    ```
+    /start
+    ```
+
+    **Example Response:**
+    ```
+    Welcome to the dotrade bot! @username
+    Wallet Address: <wallet_address>
+    ```
+  </Accordion>
+
+  <Accordion title="/setexchange - Configure Exchange">
+    Configures your preferred exchange for trading. Currently, we support Hyperliquid and Extended.
+
+    **Usage:**
+    ```
+    /setexchange [exchange_name]
+    ```
+
+    **Example:**
+    ```
+    /setexchange hyperliquid
+    ```
+  </Accordion>
+
+  <Accordion title="/setreferrer - Set Referral Code">
+    Sets your referrer code to join the referral program. By using someone's referral code, you become their direct referral and they will earn a percentage of your fees generated.
+
+    **Usage:**
+    ```
+    /setreferrer [referral_code]
+    ```
+
+    **Example:**
+    ```
+    /setreferrer ABC123
+    ```
+
+    <Warning>This command can only be used once. Make sure you have the correct referral code before setting it.</Warning>
+  </Accordion>
+
+  <Accordion title="/bridge - Bridge Funds">
+    Bridges tokens from your account to your trading exchange. Transfers your deposited tokens (currently only USDC) from your account to your selected exchange so you can start trading.
+
+    **Usage:**
+    ```
+    /bridge [amount]
+    ```
+
+    **Example:**
+    ```
+    /bridge 100
+    ```
+
+    <Note>There is a bridge fee associated with this operation, which is primarily for sponsoring the bridge transaction.</Note>
+  </Accordion>
+</AccordionGroup>
+
+### Information Commands
+
+<AccordionGroup>
+  <Accordion title="/help - Show All Commands">
+    Shows a comprehensive list of all bot commands with brief descriptions.
+
+    **Usage:**
+    ```
+    /help
+    ```
+  </Accordion>
+
+  <Accordion title="/price - Get Current Price">
+    Gets the current market price for any trading instrument. Returns the mid price of the instrument on your selected exchange.
+
+    **Usage:**
+    ```
+    /price [instrument]
+    ```
+
+    **Example:**
+    ```
+    /price ETH
+    ```
+
+    **Response:**
+    ```
+    Current ETH price: 4450.00
+    ```
+  </Accordion>
+
+  <Accordion title="/positions - View Open Positions">
+    Views all your active positions. Retrieves and displays all open positions on your selected exchange, including entry price, current PnL, size, and leverage.
+
+    **Usage:**
+    ```
+    /positions
+    ```
+  </Accordion>
+
+  <Accordion title="/balances - Check Account Balance">
+    Checks your account balances. Shows your available USDC balance and equity on your selected exchange, including unrealized PnL from open positions.
+
+    **Usage:**
+    ```
+    /balances
+    ```
+  </Accordion>
+
+  <Accordion title="/openorders - List Pending Orders">
+    Lists all pending orders. Displays all active limit orders, stop losses, and take profit orders that haven't been filled yet, along with their trigger prices and sizes.
+
+    **Usage:**
+    ```
+    /openorders
+    ```
+  </Accordion>
+</AccordionGroup>
+
+### Trading Commands
+
+<AccordionGroup>
+  <Accordion title="/market - Execute Market Order">
+    Executes an immediate market order at the best available price with 5% slippage by default.
+
+    **Usage:**
+    ```
+    /market [instrument] [side] [size]
+    ```
+
+    **Parameters:**
+    - `instrument` - Trading pair (e.g., ETH, BTC, SOL)
+    - `side` - Direction: long or short
+    - `size` - Position size in USD
+
+    **Examples:**
+    ```
+    /market ETH long 1000
+    /market BTC short 500
+    ```
+  </Accordion>
+
+  <Accordion title="/limit - Place Limit Order">
+    Places a limit order at a specific price. Creates a pending order that will only execute when the market reaches your specified price.
+
+    **Usage:**
+    ```
+    /limit [instrument] [side] [price] [size]
+    ```
+
+    **Parameters:**
+    - `instrument` - Trading pair (e.g., ETH, BTC, SOL)
+    - `side` - Direction: long or short
+    - `price` - Desired execution price
+    - `size` - Position size in USD
+
+    **Example:**
+    ```
+    /limit ETH long 3000 1000
+    ```
+  </Accordion>
+
+  <Accordion title="/close - Close Position">
+    Closes a specific position at market price by executing a market reduce-only order in the opposite direction.
+
+    **Usage:**
+    ```
+    /close [instrument] [size]
+    ```
+
+    **Parameters:**
+    - `instrument` - Trading pair to close
+    - `size` - Amount to close (can use percentages)
+
+    **Example:**
+    ```
+    /close ETH 50%
+    ```
+  </Accordion>
+
+  <Accordion title="/closeall - Close All Positions">
+    Closes all open positions immediately by executing market reduce-only orders across all instruments.
+
+    **Usage:**
+    ```
+    /closeall
+    ```
+
+    <Warning>This action closes ALL positions. Use with caution.</Warning>
+  </Accordion>
+
+  <Accordion title="/cancel - Cancel Specific Order">
+    Cancels a specific pending order before it gets filled.
+
+    **Usage:**
+    ```
+    /cancel [instrument] [order_id]
+    ```
+
+    **Example:**
+    ```
+    /cancel ETH 12345
+    ```
+
+    <Note>Due to exchange latency, the order may not be cancelled immediately sometimes.</Note>
+  </Accordion>
+
+  <Accordion title="/cancelall - Cancel All Orders">
+    Cancels all pending orders across all instruments. Your open positions remain unaffected.
+
+    **Usage:**
+    ```
+    /cancelall
+    ```
+  </Accordion>
+</AccordionGroup>
+
+### Risk Management Commands
+
+<AccordionGroup>
+  <Accordion title="/tp - Set Take Profit">
+    Sets a take profit order to lock in gains. Places an order that automatically closes your position when the price reaches your target profit level.
+
+    **Usage:**
+    ```
+    /tp [instrument] [price]
+    ```
+
+    **Parameters:**
+    - `instrument` - Trading pair
+    - `price` - Target price to take profit
+
+    **Example:**
+    ```
+    /tp ETH 3000
+    ```
+
+    If you're long ETH, this will automatically close your position when ETH reaches $3,000.
+  </Accordion>
+
+  <Accordion title="/sl - Set Stop Loss">
+    Sets a stop loss order to limit potential losses. Places a protective order that automatically closes your position if the price moves against you.
+
+    **Usage:**
+    ```
+    /sl [instrument] [price]
+    ```
+
+    **Parameters:**
+    - `instrument` - Trading pair
+    - `price` - Stop loss trigger price
+
+    **Example:**
+    ```
+    /sl ETH 2700
+    ```
+
+    If you're long ETH, this will close your position if ETH drops to $2,700.
+  </Accordion>
+
+  <Accordion title="/trailingsl - Set Trailing Stop Loss">
+    Sets a dynamic stop loss that follows price movements. The stop loss automatically adjusts as the price moves in your favor, maintaining a fixed percentage distance.
+
+    **Usage:**
+    ```
+    /trailingsl [instrument] [percentage]
+    ```
+
+    **Parameters:**
+    - `instrument` - Trading pair
+    - `percentage` - Trailing distance as a percentage
+
+    **Example:**
+    ```
+    /trailingsl ETH 5
+    ```
+
+    If you're long ETH at $2,800 and it rises to $3,000, a 5% trailing stop loss will trigger if the price drops to $2,850.
+
+    <Note>
+      **For Long positions:** Stop loss trails up as price increases.
+      
+      **For Short positions:** Stop loss trails down as price decreases.
+      
+      The stop loss never moves in an unfavorable direction.
+    </Note>
+
+    <Warning>
+      Trailing orders require delegated signing authority. Most DEXes don't natively support trailing orders, so dotrade manages them by modifying orders on your behalf as prices change.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="/trailingtp - Set Trailing Take Profit">
+    Sets a dynamic take profit that moves with the mid price of the instrument.
+
+    **Usage:**
+    ```
+    /trailingtp [instrument] [percentage]
+    ```
+
+    **Parameters:**
+    - `instrument` - Trading pair
+    - `percentage` - Trailing distance as a percentage
+
+    **Example:**
+    ```
+    /trailingtp ETH 3
+    ```
+
+    If ETH is trending upward and reaches $3,100, a 3% trailing take profit will trigger if the price drops back to $3,007.
+
+    <Warning>
+      Trailing orders require delegated signing authority.
+    </Warning>
+  </Accordion>
+</AccordionGroup>
+
+## Quick Reference
+
+| Command | Description |
+|---------|-------------|
+| `/start` | Initialize bot and get wallet address |
+| `/setexchange` | Set preferred exchange |
+| `/setreferrer` | Set your referrer code |
+| `/bridge` | Bridge funds to exchange |
+| `/help` | Show all commands |
+| `/price` | Get current price |
+| `/positions` | View open positions |
+| `/balances` | Check account balance |
+| `/openorders` | List pending orders |
+| `/market` | Execute market order |
+| `/limit` | Place limit order |
+| `/close` | Close position |
+| `/closeall` | Close all positions |
+| `/cancel` | Cancel specific order |
+| `/cancelall` | Cancel all orders |
+| `/tp` | Set take profit |
+| `/sl` | Set stop loss |
+| `/trailingsl` | Set trailing stop loss |
+| `/trailingtp` | Set trailing take profit |
+
+## Risk Warning
+
+<Warning>
+  Trading perpetual futures involves significant risk. Always do your own research and never trade with money you can't afford to lose.
+</Warning>
+
+## Get Started Now
+
+<Card
+  title="Launch dotrade Bot"
+  icon="telegram"
+  href="https://t.me/dotrade_bot"
+  horizontal
+>
+  Start trading with our Telegram bot.
+</Card>
+

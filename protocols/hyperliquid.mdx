@@ -1,0 +1,94 @@
+---
+title: "Hyperliquid"
+description: "High-performance decentralized perpetuals exchange"
+---
+
+## Overview
+
+Hyperliquid is a high-performance decentralized perpetuals exchange built on its own L1 blockchain. It provides deep liquidity through HyperCore precompiles and enables on-chain perps trading with sub-second finality. Our integration leverages Hyperliquid's native builders code to deliver institutional-grade trading infrastructure through accessible interfaces.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card
+    title="Deep Liquidity"
+    icon="water"
+  >
+    Access institutional-grade liquidity through HyperCore precompiles.
+  </Card>
+  <Card
+    title="Sub-second Finality"
+    icon="bolt"
+  >
+    Execute trades with near-instant settlement and confirmation.
+  </Card>
+  <Card
+    title="On-chain Transparency"
+    icon="eye"
+  >
+    All trades, orders, and liquidations happen transparently on-chain.
+  </Card>
+  <Card
+    title="Native Integration"
+    icon="plug"
+  >
+    Built using Hyperliquid's native builders code for optimal performance.
+  </Card>
+</CardGroup>
+
+## Technical Details
+
+Hyperliquid uses a custom consensus algorithm called HyperBFT inspired by Hotstuff. The platform supports:
+
+- **200k orders/second** throughput
+- **One-block finality** for all operations
+- **Fully on-chain** order books
+- **Transparent liquidations**
+
+Learn more about Hyperliquid: [Hyperliquid Documentation](https://hyperliquid.gitbook.io/hyperliquid-docs)
+
+## Products on Hyperliquid
+
+<CardGroup cols={2}>
+  <Card
+    title="Telegram Bot"
+    icon="robot"
+    href="/products/telegram-bot"
+  >
+    Trade Hyperliquid perpetuals directly from Telegram.
+  </Card>
+  <Card
+    title="Basis Trading"
+    icon="chart-mixed"
+    href="/products/delta-neutral-vaults"
+  >
+    Automated funding rate arbitrage on Hyperliquid.
+  </Card>
+</CardGroup>
+
+## Getting Started
+
+<Steps>
+  <Step title="Launch the Bot">
+    Start the dotrade Telegram bot to begin trading on Hyperliquid.
+  </Step>
+  <Step title="Set Exchange">
+    Use `/setexchange hyperliquid` to configure Hyperliquid as your trading venue.
+  </Step>
+  <Step title="Bridge Funds">
+    Bridge USDC to your Hyperliquid account using the `/bridge` command.
+  </Step>
+  <Step title="Start Trading">
+    Execute market and limit orders using simple Telegram commands.
+  </Step>
+</Steps>
+
+<Card
+  title="Launch dotrade Bot"
+  icon="telegram"
+  href="https://t.me/dotrade_bot"
+  horizontal
+>
+  Start trading on Hyperliquid now.
+</Card>
+

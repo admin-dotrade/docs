@@ -1,0 +1,171 @@
+---
+title: "Frequently Asked Questions"
+description: "Common questions about dotrade"
+---
+
+## General Questions
+
+<AccordionGroup>
+  <Accordion title="What is dotrade?">
+    dotrade is a universal trading layer that enables you to trade across multiple app chains, DeFi protocols, vaults, and prediction markets through a unified platform. We integrate the best protocols and create products that make trading accessible to everyone.
+  </Accordion>
+
+  <Accordion title="Is dotrade custodial?">
+    No. dotrade uses Privy's non-custodial wallet infrastructure. You maintain full custody of your assets at all times. For advanced features like trailing stops, you delegate signing authority to the platform, but we never have custody of your funds.
+  </Accordion>
+
+  <Accordion title="Which exchanges does dotrade support?">
+    Currently, we support:
+    - Hyperliquid (fully integrated)
+    - Extended (coming soon)
+    - Lighter (coming soon)
+    - Polymarket (coming soon)
+  </Accordion>
+
+  <Accordion title="What tokens can I trade?">
+    You can trade any perpetual contracts available on your selected exchange. On Hyperliquid, this includes major cryptocurrencies like BTC, ETH, SOL, and many more.
+  </Accordion>
+</AccordionGroup>
+
+## Getting Started
+
+<AccordionGroup>
+  <Accordion title="How do I start using dotrade?">
+    1. Open Telegram and search for [@dotrade_bot](https://t.me/dotrade_bot)
+    2. Send `/start` to initialize your account
+    3. Deposit USDC to your provided wallet address
+    4. Set your exchange with `/setexchange hyperliquid`
+    5. Bridge funds with `/bridge [amount]`
+    6. Start trading!
+  </Accordion>
+
+  <Accordion title="Do I need to create an account?">
+    When you send `/start` to the bot, a Privy wallet is automatically created for you. No separate registration or KYC is required.
+  </Accordion>
+
+  <Accordion title="How do I deposit funds?">
+    After starting the bot, you'll receive a wallet address. Send USDC to this address from any compatible wallet or exchange. Then use `/bridge [amount]` to move funds to your trading exchange.
+  </Accordion>
+
+  <Accordion title="What is the minimum deposit?">
+    There's no strict minimum, but we recommend at least $50-100 to cover bridge fees and have enough for meaningful trading.
+  </Accordion>
+</AccordionGroup>
+
+## Trading
+
+<AccordionGroup>
+  <Accordion title="What types of orders can I place?">
+    dotrade supports:
+    - Market orders (`/market`)
+    - Limit orders (`/limit`)
+    - Take profit orders (`/tp`)
+    - Stop loss orders (`/sl`)
+    - Trailing stop loss (`/trailingsl`)
+    - Trailing take profit (`/trailingtp`)
+  </Accordion>
+
+  <Accordion title="What is the default slippage?">
+    Market orders use 5% slippage by default to ensure execution. This protects you from significant price movements during order execution.
+  </Accordion>
+
+  <Accordion title="How do trailing orders work?">
+    Trailing orders dynamically adjust as the price moves in your favor:
+    - **Trailing stop loss**: Locks in profits by moving the stop loss up (for longs) or down (for shorts)
+    - **Trailing take profit**: Follows the price to maximize gains
+    
+    These require delegated signing authority since most DEXes don't natively support them.
+  </Accordion>
+
+  <Accordion title="Can I trade on mobile?">
+    Yes! Since dotrade is a Telegram bot, you can trade from any device with Telegram installed - mobile, tablet, or desktop.
+  </Accordion>
+</AccordionGroup>
+
+## Fees
+
+<AccordionGroup>
+  <Accordion title="What fees does dotrade charge?">
+    dotrade charges:
+    - Bridge fees (to cover transaction costs)
+    - Trading fees (varies by exchange)
+    
+    All fees are transparently displayed before you confirm transactions.
+  </Accordion>
+
+  <Accordion title="Are there any hidden fees?">
+    No. All fees are disclosed upfront. You'll also pay standard blockchain gas fees and exchange trading fees, which vary by network and exchange.
+  </Accordion>
+
+  <Accordion title="Do I get referral rewards?">
+    Yes! Use `/setreferrer [code]` to set a referral code. You'll benefit from reduced fees, and your referrer earns a percentage of your trading fees.
+  </Accordion>
+</AccordionGroup>
+
+## Security
+
+<AccordionGroup>
+  <Accordion title="Is dotrade safe to use?">
+    dotrade prioritizes security:
+    - Non-custodial architecture (you control your keys)
+    - Built on Privy's secure wallet infrastructure
+    - Transparent on-chain execution
+    - Regular security audits (coming soon)
+    
+    However, DeFi involves risks. Always do your own research and never trade more than you can afford to lose.
+  </Accordion>
+
+  <Accordion title="What is delegated signing?">
+    For advanced features like trailing orders, you delegate signing authority to dotrade. This allows the platform to modify orders on your behalf as prices change. You can revoke this permission at any time, and we never have custody of your funds.
+  </Accordion>
+
+  <Accordion title="Can I withdraw my funds anytime?">
+    Yes. You have full control of your wallet and can withdraw funds at any time. Simply close your positions and bridge your funds back to your wallet.
+  </Accordion>
+</AccordionGroup>
+
+## Technical
+
+<AccordionGroup>
+  <Accordion title="Which blockchains does dotrade support?">
+    Currently:
+    - Hyperliquid L1 (for perpetuals trading)
+    - Arbitrum (for bridging and deposits)
+    
+    More chains coming soon as we integrate additional protocols.
+  </Accordion>
+
+  <Accordion title="What happens if the bot goes down?">
+    Your funds remain safe in your non-custodial wallet. You can access them directly through your Privy account or by importing your private key to another wallet. Active positions on exchanges remain open and can be managed directly through the exchange interface.
+  </Accordion>
+
+  <Accordion title="Can I use the same wallet on multiple devices?">
+    Yes, you can access your Privy wallet from multiple devices by logging into Telegram on those devices.
+  </Accordion>
+</AccordionGroup>
+
+## Products
+
+<AccordionGroup>
+  <Accordion title="What are Delta Neutral Vaults?">
+    Delta Neutral Vaults are automated strategies that earn funding rates by maintaining market-neutral positions. They simultaneously hold spot and short perpetual positions to capture funding payments without directional exposure.
+    
+    [Learn more about Delta Neutral Vaults](/products/delta-neutral-vaults)
+  </Accordion>
+
+  <Accordion title="When will new products launch?">
+    We're constantly developing new products. Join our [Telegram community](https://t.me/dotrade) to stay updated on launches and announcements.
+  </Accordion>
+</AccordionGroup>
+
+## Still Have Questions?
+
+<Card
+  title="Contact Support"
+  icon="telegram"
+  href="https://t.me/dotrade"
+  horizontal
+>
+  Join our Telegram community for personalized support.
+</Card>
+
