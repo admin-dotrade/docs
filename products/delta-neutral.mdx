@@ -1,134 +1,37 @@
 ---
-title: "Delta Neutral Vaults"
-description: "Automated yield generation through funding rate arbitrage"
+title: "Neutral Vaults"
+description: "Automated yield generation through funding rate arbitrage and basis trading"
 ---
 
 ## Overview
 
-An automated yield generation strategy that exploits funding rate arbitrage between Hyperliquid perpetuals and spot holdings. The dotrade engine manages delta-neutral portfolios to capture funding payments while minimizing directional exposure.
+Automated yield generation through funding rate arbitrage. Earn consistent returns without directional market exposure by simultaneously holding spot assets and shorting perpetuals.
 
-## What is Basis Trading?
+<Info>
+  **Delta-neutral strategy** - Profit from funding rates regardless of price movement.
+</Info>
 
-Basis trading, also known as cash-and-carry arbitrage, involves simultaneously holding:
-
-1. **Spot position** - Long position in the underlying asset
-2. **Perpetual position** - Short position in the perpetual contract
-
-This creates a **delta-neutral** portfolio that earns funding rates without directional market exposure.
-
-## How It Works
-
-<Steps>
-  <Step title="Identify Opportunity">
-    The dotrade engine continuously monitors funding rates across Hyperliquid perpetuals to identify profitable opportunities.
-  </Step>
-  <Step title="Enter Positions">
-    When funding rates are favorable, the vault simultaneously:
-    - Buys the spot asset
-    - Opens an equal-sized short perpetual position
-  </Step>
-  <Step title="Collect Funding">
-    As long as the funding rate is positive, short positions receive funding payments from long positions every 8 hours.
-  </Step>
-  <Step title="Manage Risk">
-    The engine continuously monitors and rebalances positions to maintain delta neutrality and manage risks.
-  </Step>
-  <Step title="Exit & Compound">
-    Profits are collected and either distributed or compounded back into the strategy.
-  </Step>
-</Steps>
-
-## Key Features
-
-<CardGroup cols={2}>
-  <Card
-    title="Delta Neutral"
-    icon="balance-scale"
-  >
-    No directional market exposure - profits regardless of price movement.
-  </Card>
-  <Card
-    title="Automated Management"
-    icon="robot"
-  >
-    Fully automated position management and rebalancing.
-  </Card>
-  <Card
-    title="Funding Rate Capture"
-    icon="coins"
-  >
-    Earn consistent funding payments from perpetual markets.
-  </Card>
-  <Card
-    title="Risk Managed"
-    icon="shield-check"
-  >
-    Continuous monitoring and risk management by dotrade engine.
-  </Card>
-</CardGroup>
-
-## Benefits
-
-### Consistent Yield
-Generate steady returns from funding rate arbitrage, independent of market direction.
-
-### Low Risk
-Delta-neutral positioning minimizes exposure to price volatility.
-
-### Automated
-No manual intervention required - the engine handles all trading and rebalancing.
-
-### Transparent
-All positions and trades are visible on-chain through Hyperliquid.
-
-## Risks to Consider
-
-<Warning>
-  While delta-neutral strategies minimize directional risk, they are not risk-free:
-</Warning>
-
-- **Funding rate reversal** - Rates can turn negative, requiring payment instead of collection
-- **Execution risk** - Slippage and timing differences when entering/exiting positions
-- **Liquidation risk** - Extreme volatility could affect position management
-- **Smart contract risk** - Risks inherent in DeFi protocols and smart contracts
-
-## Performance Metrics
+## Get Started
 
 <Note>
-  Detailed performance metrics and historical returns coming soon.
-</Note>
-
-## How to Participate
-
-<Note>
-  Delta Neutral Vaults are coming soon. Join our community to get notified when they launch.
+  **Coming Soon** - Join our community for launch updates
 </Note>
 
 <Card
-  title="Join our Community"
+  title="Join Telegram"
   icon="telegram"
   href="https://t.me/dotrade"
-  horizontal
 >
-  Get updates on vault launches and performance.
+  Get notified when vaults launch
 </Card>
 
-## Learn More
+## Related
 
 <CardGroup cols={2}>
-  <Card
-    title="Hyperliquid Integration"
-    icon="link"
-    href="/protocols/hyperliquid"
-  >
-    Learn about our Hyperliquid integration.
+  <Card title="Hyperliquid" icon="link" href="/protocols/hyperliquid">
+    Our Hyperliquid integration
   </Card>
-  <Card
-    title="Telegram Bot"
-    icon="robot"
-    href="/products/telegram-bot"
-  >
-    Trade Hyperliquid manually with our bot.
+  <Card title="Telegram Bot" icon="robot" href="/products/telegram-bot">
+    Manual trading interface
   </Card>
 </CardGroup>
-
