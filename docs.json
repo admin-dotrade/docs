@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "dotrade",
   "colors": {
-    "primary": "#337E81",
-    "light": "#24b3bb",
-    "dark": "#045559"
+    "primary": "#16A34A",
+    "light": "#07C983",
+    "dark": "#15803D"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -64,26 +64,26 @@
     "links": [
       {
         "label": "Support",
-        "href": "https://t.me/dotrade"
+        "href": "https://x.com/dotradelabs"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Launch App",
-      "href": "https://t.me/dotrade_bot"
+      "href": "https://www.dotrade.xyz/"
     }
   },
   "contextual": {
     "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
-    ]
+     "copy",
+     "view",
+     "chatgpt",
+     "claude",
+     "perplexity",
+     "mcp",
+     "cursor",
+     "vscode"
+   ]
   },
   "footer": {
     "socials": {
